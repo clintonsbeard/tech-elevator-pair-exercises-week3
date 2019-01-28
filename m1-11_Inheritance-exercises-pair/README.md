@@ -120,14 +120,14 @@ System.out.println(String.format("Jay Gatsby has %s accounts.", jayGatsby.getAcc
 ```
 
 ##### BankTeller
-
+ 
 Create a class called BankTeller that has a void main method that allows you to verify that your application is working as expected.
 
 Things you should verify:
 
 * The withdraw method works as expected for Checking and Savings accounts.
 * The deposit method works as expected.
-* Accounts can be addded to a bank customer.
+* Accounts can be added to a bank customer.
 * Determining if a customer is a VIP works as expected. (Part 3)
 
 #### Part 3 (Day 2)
