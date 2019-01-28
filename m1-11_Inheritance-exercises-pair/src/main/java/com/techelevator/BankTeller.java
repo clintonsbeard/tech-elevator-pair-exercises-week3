@@ -8,12 +8,17 @@ public class BankTeller {
 
 	public static void main(String[] args) {
 		
-		List<BankAccount> joesAccountList = new ArrayList<BankAccount>();
+//		List<BankAccount> joesAccountList = new ArrayList<BankAccount>();
 		
 		BankCustomer joeJohn = new BankCustomer();
 		
 		CheckingAccount checking = new CheckingAccount();
 		SavingsAccount savings = new SavingsAccount();
+		
+		joeJohn.addAccount(checking);
+		joeJohn.addAccount(savings);
+		
+		System.out.println(String.format("Joe John has %s accounts.", joeJohn.getAccounts().size()));
 		
 		checking.deposit(new BigDecimal(100.00));
 		savings.deposit(new BigDecimal(50.00));

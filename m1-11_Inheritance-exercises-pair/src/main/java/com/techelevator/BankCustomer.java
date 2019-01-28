@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BankCustomer {
@@ -13,6 +14,12 @@ public class BankCustomer {
 	
 	public void addAccount(BankAccount newAccount) {
 		accounts.add(newAccount);
+	}
+	
+	//constructor
+	
+	public BankCustomer() {
+		accounts = new ArrayList<>();
 	}
 	
 	//GETTER and SETTER
