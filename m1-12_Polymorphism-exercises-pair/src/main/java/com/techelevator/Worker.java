@@ -11,5 +11,4 @@ public interface Worker {
 	
 	public double calculateWeeklyPay(int hoursWorked);
 	
-	
 }

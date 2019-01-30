@@ -1,26 +1,42 @@
 package com.techelevator;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankCustomer {
+public class BankCustomer extends BankAccount {
 	
 	private String name;
 	private String address;
 	private String phoneNumber;
 	private List<BankAccount> accounts;
 	
-	//Method to add accounts to a customer's list of accounts
+	//constructor
+	
+		public BankCustomer(String name, String address, String phoneNumber, List<BankAccount> accounts) {
+			this.accounts = accounts;
+			
+		}
+
+	/* Methods */
 	
 	public void addAccount(BankAccount newAccount) {
 		accounts.add(newAccount);
 	}
 	
-	//constructor
-	
-	public BankCustomer() {
-		accounts = new ArrayList<>();
+	public boolean isVIP() {
+		BigDecimal sumOfAccounts = new BigDecimal(0.00);
+		BigDecimal vipAmount = new BigDecimal(25000.00);
+		for (BankAccount thisAccount : accounts) {
+			sumOfAccounts = sumOfAccounts.add(thisAccount.getBalance());
+		}
+		if (sumOfAccounts.compareTo(vipAmount) == 1) {
+			return true;
+		}
+		return false;
 	}
+	
+	
 	
 	//GETTER and SETTER
 	public String getName() {

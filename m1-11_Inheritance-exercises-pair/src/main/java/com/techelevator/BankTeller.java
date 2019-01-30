@@ -3,34 +3,79 @@ package com.techelevator;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class BankTeller {
 
 	public static void main(String[] args) {
 		
-//		List<BankAccount> joesAccountList = new ArrayList<BankAccount>();
+		Scanner in = new Scanner (System.in);
 		
-		BankCustomer joeJohn = new BankCustomer();
+		/* Create list of customer accounts for each customer. */
 		
-		CheckingAccount checking = new CheckingAccount();
-		SavingsAccount savings = new SavingsAccount();
+		List<BankAccount> listOfJoeJohnsonAccounts = new ArrayList<>();
+			
+			
+			/* Give them a checking and a savings account. */ 
 		
-		joeJohn.addAccount(checking);
-		joeJohn.addAccount(savings);
+			BankAccount joeJohnsonSavings = new SavingsAccount();
+			BankAccount joeJohnsonChecking = new CheckingAccount();
+			
+			listOfJoeJohnsonAccounts.add(joeJohnsonChecking);
+			listOfJoeJohnsonAccounts.add(joeJohnsonSavings);
+			
+			/* Add the checking and savings account to the list of customer's accounts. */
+			
+			BigDecimal joeJohnsonCheckingDeposit = new BigDecimal("21000.00");
+			BigDecimal joeJohnsonSavingsDeposit = new BigDecimal("14999.99");
+			
+			joeJohnsonChecking.deposit(joeJohnsonCheckingDeposit);
+			joeJohnsonSavings.deposit(joeJohnsonSavingsDeposit);
+			
+			
+			
+			/* Create the customer and attach their list of accounts to them. */
 		
-		System.out.println(String.format("Joe John has %s accounts.", joeJohn.getAccounts().size()));
+			BankCustomer joeJohnson = new BankCustomer("Joe Johnson", "123 Street Road", "555-555-5555", listOfJoeJohnsonAccounts);
+			
+			/* Deposit money in their accounts. */
+			
+			
+			
+			
+			
 		
-		checking.deposit(new BigDecimal(100.00));
-		savings.deposit(new BigDecimal(50.00));
+		List<BankAccount> listOfSallySmithAccounts = new ArrayList<>();
 		
-		System.out.println(checking.getBalance());
-		System.out.println(savings.getBalance());
+			SavingsAccount sallySmithSavings = new SavingsAccount();
+			CheckingAccount sallySmithChecking = new CheckingAccount();
 		
-		checking.withdraw(new BigDecimal(400.00));
-		savings.withdraw(new BigDecimal(48.00));
+			listOfSallySmithAccounts.add(sallySmithChecking);
+			listOfSallySmithAccounts.add(sallySmithSavings);
 		
-		System.out.println(checking.getBalance());
-		System.out.println(savings.getBalance());
-	}
+			new BankCustomer("Sally Smith", "123 Street Road", "555-555-5555", listOfSallySmithAccounts);
+		
+			BigDecimal sallySmithCheckingDeposit = new BigDecimal(25000.00);
+			BigDecimal sallySmithSavingsDeposit = new BigDecimal(25000.00);
+			
+			sallySmithChecking.deposit(sallySmithCheckingDeposit);
+			sallySmithSavings.deposit(sallySmithCheckingDeposit);
+			
+		List<BankAccount> listOfNeilDiamondAccounts = new ArrayList<>();
+		
+			CheckingAccount neilDiamondChecking = new CheckingAccount();
+		
+			listOfNeilDiamondAccounts.add(neilDiamondChecking);
+		
+			new BankCustomer("Neil Diamond", "1000 Diamond Road", "555-555-5555", listOfNeilDiamondAccounts);
+			
+			
+			/* withdraw method verification*/
+			
+			
+		
+			
+			System.out.println(joeJohnson.isVIP());
+			}
 
 }
