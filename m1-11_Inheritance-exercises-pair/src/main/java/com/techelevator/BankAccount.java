@@ -32,8 +32,8 @@ public class BankAccount {
 		return balance = getBalance().subtract(amountToWithdraw);
 	}
 	public void transfer(BankAccount destinationAccount, BigDecimal transferAmount) {
-		this.balance.subtract(transferAmount);
-		destinationAccount.balance.add(transferAmount);
+		this.balance = getBalance().subtract(transferAmount);
+		destinationAccount.balance = destinationAccount.getBalance().add(transferAmount);
 	}
 	
 }

@@ -3,79 +3,77 @@ package com.techelevator;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class BankTeller {
 
 	public static void main(String[] args) {
 		
-		Scanner in = new Scanner (System.in);
+		/* Creating Checking and Savings Account (classes) for Sally. */
+			
+			BankAccount sallysSavings = new SavingsAccount();
+			BankAccount sallysChecking = new CheckingAccount();
+
 		
-		/* Create list of customer accounts for each customer. */
+		/* Creating Bank accounts for Sally*/
 		
-		List<BankAccount> listOfJoeJohnsonAccounts = new ArrayList<>();
-			
-			
-			/* Give them a checking and a savings account. */ 
+			List<BankAccount> sallysAccounts = new ArrayList<>();
 		
-			BankAccount joeJohnsonSavings = new SavingsAccount();
-			BankAccount joeJohnsonChecking = new CheckingAccount();
+		/* Adding newly created Checking and Savings Accounts to their list of Bank accounts */
+
 			
-			listOfJoeJohnsonAccounts.add(joeJohnsonChecking);
-			listOfJoeJohnsonAccounts.add(joeJohnsonSavings);
-			
-			/* Add the checking and savings account to the list of customer's accounts. */
-			
-			BigDecimal joeJohnsonCheckingDeposit = new BigDecimal("21000.00");
-			BigDecimal joeJohnsonSavingsDeposit = new BigDecimal("14999.99");
-			
-			joeJohnsonChecking.deposit(joeJohnsonCheckingDeposit);
-			joeJohnsonSavings.deposit(joeJohnsonSavingsDeposit);
+			sallysAccounts.add(sallysSavings);
+			sallysAccounts.add(sallysChecking);
 			
 			
+		/* Create the Bank customers and adding them to List Of Customers 
+		 * (with "name", "address", "phone number" and <list of accounts>. 
+		 */
 			
-			/* Create the customer and attach their list of accounts to them. */
+			BankCustomer sallyHensen = new BankCustomer("Sally Hensen", "456 Street Road", "555-555-5556", sallysAccounts);
+
+		/* Create list of Bank customers. */
 		
-			BankCustomer joeJohnson = new BankCustomer("Joe Johnson", "123 Street Road", "555-555-5555", listOfJoeJohnsonAccounts);
-			
-			/* Deposit money in their accounts. */
-			
-			
-			
-			
-			
+			List<BankCustomer> listOfCustomers = new ArrayList<>();
 		
-		List<BankAccount> listOfSallySmithAccounts = new ArrayList<>();
-		
-			SavingsAccount sallySmithSavings = new SavingsAccount();
-			CheckingAccount sallySmithChecking = new CheckingAccount();
-		
-			listOfSallySmithAccounts.add(sallySmithChecking);
-			listOfSallySmithAccounts.add(sallySmithSavings);
-		
-			new BankCustomer("Sally Smith", "123 Street Road", "555-555-5555", listOfSallySmithAccounts);
-		
-			BigDecimal sallySmithCheckingDeposit = new BigDecimal(25000.00);
-			BigDecimal sallySmithSavingsDeposit = new BigDecimal(25000.00);
+		/* Adding Joe, Sally and Neil to listOfCustomers*/
 			
-			sallySmithChecking.deposit(sallySmithCheckingDeposit);
-			sallySmithSavings.deposit(sallySmithCheckingDeposit);
+			listOfCustomers.add(sallyHensen);
+
+		/* Deposit money in Joe, Sally and Neil's accounts. */
 			
-		List<BankAccount> listOfNeilDiamondAccounts = new ArrayList<>();
-		
-			CheckingAccount neilDiamondChecking = new CheckingAccount();
-		
-			listOfNeilDiamondAccounts.add(neilDiamondChecking);
-		
-			new BankCustomer("Neil Diamond", "1000 Diamond Road", "555-555-5555", listOfNeilDiamondAccounts);
-			
-			
-			/* withdraw method verification*/
-			
-			
+
+			sallysChecking.deposit(new BigDecimal("100.00"));
+			sallysSavings.deposit(new BigDecimal("120.00"));
+
 		
 			
-			System.out.println(joeJohnson.isVIP());
-			}
+		/* withdraw and transfer method verification*/
+			
+			
+			
+
+			System.out.println("Sallys Checking Account Balance now is: " + sallysChecking.getBalance());
+			System.out.println("Sallys Savings Account Balance now is: " + sallysSavings.getBalance());
+			System.out.println("Is Sally Hensen a VIP? " + sallyHensen.isVIP());
+			
+			/* tranferring money by withdraw and deposit */
+			
+//			BigDecimal amountToTransfer = new BigDecimal("5200.00");
+			sallysChecking.withdraw(new BigDecimal("120.00"));
+			System.out.println(sallysChecking.getBalance());
+//			sallysChecking.deposit(amountToTransfer);
+//			
+			
+			sallysSavings.transfer(sallysChecking, new BigDecimal("5200.00"));
+			System.out.println("Sallys Checking Account Balance (after trasnfer of 5200.00) now is: " + sallysChecking.getBalance());
+			System.out.println("Sallys Savings Account Balance (after trasnfer of 5200.00) now is: " + sallysSavings.getBalance());
+
+
+		
+		/*Printing Whether a customer is VIP?*/
+			
+			System.out.println("(after transfer) Is Sally Hensen a VIP? " + sallyHensen.isVIP());
+			
+		}
 
 }

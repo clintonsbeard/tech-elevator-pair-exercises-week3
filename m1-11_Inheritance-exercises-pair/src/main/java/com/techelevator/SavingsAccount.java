@@ -3,18 +3,14 @@ package com.techelevator;
 import java.math.BigDecimal;
 
 public class SavingsAccount extends BankAccount {
-	
-	BigDecimal overdraftFee = new BigDecimal(2.00); 
-	BigDecimal hundredFifty = new BigDecimal(148.01);
 		
 	@Override
 	public BigDecimal withdraw(BigDecimal amountToWithdraw) {
 			
 		if (getBalance().compareTo(amountToWithdraw) < 0) {
 			return getBalance();
-		}
-		if (getBalance().compareTo(hundredFifty) < 0) {
-			return super.withdraw(amountToWithdraw.add(overdraftFee));
+		}else if (getBalance().compareTo(new BigDecimal(150.00)) == (-1)) {
+			return super.withdraw(amountToWithdraw.add(new BigDecimal(2.00)));
 		}
 		return super.withdraw(amountToWithdraw);
 	}

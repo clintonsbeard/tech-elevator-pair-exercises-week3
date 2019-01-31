@@ -15,14 +15,22 @@ public class BankCustomer extends BankAccount {
 	
 		public BankCustomer(String name, String address, String phoneNumber, List<BankAccount> accounts) {
 			this.accounts = accounts;
+			this.name = name;
+			this.address = address;
+			this.phoneNumber = phoneNumber;
 			
 		}
 
 	/* Methods */
+		
+	/*Adds newAccount to the customer's list of accounts.*/
+		/* with the constructor above we will now be using this method*/
 	
 	public void addAccount(BankAccount newAccount) {
 		accounts.add(newAccount);
 	}
+	
+	/*Determining if a customer is a VIP works as expected*/
 	
 	public boolean isVIP() {
 		BigDecimal sumOfAccounts = new BigDecimal(0.00);
